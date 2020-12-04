@@ -1,0 +1,4 @@
+include README.md
+recursive-include reference.conf
+recursive-include reference.*.conf
+include CHANGELOG.md
