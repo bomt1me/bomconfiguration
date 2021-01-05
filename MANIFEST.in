@@ -1,4 +1,4 @@
 include README.md
-recursive-include reference.conf
-recursive-include reference.*.conf
+recursive-include src/bom reference.conf
+recursive-include src/bom reference.*.conf
 include CHANGELOG.md
