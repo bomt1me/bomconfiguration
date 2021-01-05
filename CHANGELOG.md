@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ### Changes
 
 ### Fixes
+* fix: Fix manifest.in for reference.confs
 
 ### Breaks
 
