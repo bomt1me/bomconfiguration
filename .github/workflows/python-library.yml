@@ -25,3 +25,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipenv invoke
         pipenv install --deploy --system --ignore-pipfile
+
+    - name: Run lint
+      run: |
+        pipenv run invoke lint
+
+    - name: Run unit tests
+      run: |
+        pipenv run invoke test
+
+    - name: Build and Release
+      if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push'}}
+      run: |
+        pipenv run invoke build publish

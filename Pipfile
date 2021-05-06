@@ -16,6 +16,3 @@ twine = "*"
 changelog-cli = "*"
 
 [packages]
-
-[requires]
-python_version = "3.9"

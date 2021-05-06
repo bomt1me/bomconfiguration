@@ -5,14 +5,12 @@ from pathlib import Path
 from setuptools import setup, find_namespace_packages
 
 
-REQUIREMENTS = [
-    "pyhocon",
-]
+REQUIREMENTS = []
 
 
 setup(
     name="bom-configuration",
-    version="1.0.1",
+    version="1.0.0",
     description="config",
     long_description=Path("README.md").read_text(),
     author="Calvin Spring",
@@ -23,10 +21,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     classifiers=[
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.8",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.9",
+    python_requires=">=3.8",
     install_requires=REQUIREMENTS,
     setup_requires=[],
 )
