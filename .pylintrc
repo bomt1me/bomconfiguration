@@ -1,2 +1,5 @@
 [Master]
 disable = bad-continuation
+
+[FORMAT]
+max-line-length=120
