@@ -36,7 +36,7 @@ jobs:
         pipenv run invoke test
 
     - name: Build and Release
-      if: ${{ github.ref == 'refs/heads/master' && github.event_name == 'push'}}
+      if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push'}}
       env:
         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
