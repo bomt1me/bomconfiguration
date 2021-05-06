@@ -1,4 +1,3 @@
 include README.md
-recursive-include src/bom reference.conf
-recursive-include src/bom reference.*.conf
+recursive-include src/bom py.typed
 include CHANGELOG.md
