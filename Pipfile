@@ -14,5 +14,6 @@ mypy = "*"
 invoke = "*"
 twine = "*"
 changelog-cli = "*"
+mkdocs-material = "*"
 
 [packages]
