@@ -10,7 +10,7 @@ REQUIREMENTS = []
 
 setup(
     name="bom-configuration",
-    version="1.0.0",
+    version="1.0.3",
     description="config",
     long_description=Path("README.md").read_text(),
     author="Calvin Spring",
