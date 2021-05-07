@@ -10,10 +10,11 @@ REQUIREMENTS = []
 
 setup(
     name="bom-configuration",
-    version="1.0.3",
+    version="1.0.4",
     description="config",
     long_description=Path("README.md").read_text(),
     author="Calvin Spring",
+    author_email="springcalvind@gmail.com",
     url="https://github.com/bomt1me/bomconfiguration",
     packages=find_namespace_packages("src"),
     namespace_packages=["bom"],
