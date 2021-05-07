@@ -1,17 +1,47 @@
-# Welcome to MkDocs
+# About
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+bom-configuration is a simple, opinionated python configuration library.
 
-## Commands
+# Usage
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+This library is useful in the form of an `application` and `library` relationship. That is, your application consumes various libraries and a base configuration is built from the libraries.
 
-## Project layout
+In each library, create a `Config`.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+```py
+# storage library
+
+from bom.configuration import Config
+
+specs = {
+  "host": "localhost",
+  "port": 5432,
+  "password": "password",
+}
+config = Config.from_dict(specs)
+
+print(config.get("host"))
+# prints 'localhost'
+```
+
+In the application, create an `AppConfig`.
+
+```py
+# application
+
+from bom.configuration import load, AppConfig
+
+specs = {
+  "ENV": "prod",
+  "app_name": "cool application",
+  "app_version": "1.0.0",
+}
+
+config: AppConfig = load(specs)
+
+print(config.get("host"))
+# prints 'localhost'
+
+print(config.env)
+# prints 'prod'
+```

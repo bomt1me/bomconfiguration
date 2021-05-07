@@ -41,4 +41,5 @@ jobs:
         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
       run: |
+        mkdocs gh-deploy --force
         pipenv run invoke build publish
