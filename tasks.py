@@ -57,3 +57,10 @@ def publish(ctx):
     user = os.getenv("PYPI_USERNAME")
     password = os.getenv("PYPI_PASSWORD")
     ctx.run(f"pipenv run twine upload dist/* -u {user} -p {password}", echo=True, pty=True)
+
+
+@invoke.task
+def doc(ctx):
+    """ doc """
+
+    ctx.run("pipenv run mkdocs serve", pty=True, echo=True)

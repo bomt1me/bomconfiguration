@@ -1,0 +1,4 @@
+site_name: bom-configuration
+theme:
+  name: material
+repo_url: https://github.com/bomt1me/bomconfiguration
