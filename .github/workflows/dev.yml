@@ -21,12 +21,12 @@ jobs:
         run: sh scripts/docker ${{ matrix.python-version }}
       - name: "Build Package"
         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/build"
-      # - name: "Lint package"
-      #   run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/lint"
-      # - name: "Run tests"
-      #   run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/test"
-      # - name: "Run coverage"
-      #   run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/coverage"
+      - name: "Lint package"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/lint"
+      - name: "Run tests"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/test"
+      - name: "Run coverage"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/coverage"
       - name: "Publish to PyPI"
         if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && matrix.python-version == 'python:3.8-bullseye' }}
         env:
