@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["python:3.8-bullseye", "python:3.9-bullseye", "python:3.10-bullseye"]
+        python-version: ["python:3.8-bullseye"]
 
     steps:
       - uses: "actions/checkout@v2"
@@ -32,4 +32,4 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration --env TWINE_PASSWORD=$TWINE_PASSWORD --env TWINE_USERNAME=$TWINE_USERNAME sh scripts/publish"
+        run: "docker run --env TWINE_PASSWORD=$TWINE_PASSWORD --env TWINE_USERNAME=$TWINE_USERNAME -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/publish"
