@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["python:3.8-bullseye"]
+        python-version: ["python:3.8-bullseye", "python:3.9-bullseye", "python:3.10-bullseye"]
 
     steps:
       - uses: "actions/checkout@v2"
