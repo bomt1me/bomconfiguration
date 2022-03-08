@@ -16,4 +16,5 @@ fi
 
 set -x
 
-echo "twine upload dist/*"
+twine upload dist/*
+mkdocs gh-deploy --force

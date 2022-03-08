@@ -20,8 +20,10 @@ jobs:
           python-version: 3.8
       - name: "Build Docker"
         run: "sh scripts/docker python:3.8-bullseye"
+      - name: "Build Package"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/build"
       - name: "Publish to PyPI"
         run: "sh scripts/publish"
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
