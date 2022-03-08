@@ -32,4 +32,4 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/publish"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration --env TWINE_PASSWORD=$TWINE_PASSWORD --env TWINE_USERNAME=$TWINE_USERNAME sh scripts/publish"
