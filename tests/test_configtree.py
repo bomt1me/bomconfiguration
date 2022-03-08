@@ -12,10 +12,10 @@ from bom.configuration import configtree
         ("hello.there", ["hello", "there"]),
         (".there", ["", "there"]),
         (".there.", ["", "there", ""]),
-        (".'calvin.spring\".bye.", ["", "'calvin", 'spring"', "bye", ""]),
+        (".'foo.bar\".bye.", ["", "'foo", 'bar"', "bye", ""]),
         ("", [""]),
         ("..", ["", "", ""]),
-        ("calvin'spring", ["calvin'spring"]),
+        ("foo'bar", ["foo'bar"]),
         ('host."1.0.0.1".name', ["host", "1.0.0.1", "name"]),
     ],
 )
