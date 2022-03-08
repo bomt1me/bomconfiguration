@@ -8,8 +8,6 @@ jobs:
   publish:
     name: "Publish release"
     runs-on: "ubuntu-latest"
-    if: ${{ github.ref == 'refs/heads/main' }}
-
     environment:
       name: deploy
 
