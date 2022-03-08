@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+set -e
+
+docker build . --build-arg PYTHON_VERSION=${1:-python:3-bullseye} -t bom-configuration

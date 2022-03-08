@@ -1,30 +1,24 @@
-"""setup.py """
-
-
 from pathlib import Path
 from setuptools import setup, find_namespace_packages
 
 
 REQUIREMENTS = []
+VERSION = "0.1.0"
 
 
 setup(
     name="bom-configuration",
-    version="1.0.4",
-    description="config",
+    version=VERSION,
+    description="Config fun.",
     long_description=Path("README.md").read_text(),
-    author="Calvin Spring",
-    author_email="springcalvind@gmail.com",
+    long_description_content_type="text/markdown",
     url="https://github.com/bomt1me/bomconfiguration",
     packages=find_namespace_packages("src"),
     namespace_packages=["bom"],
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-    classifiers=[
-        "Programming Language :: Python :: 3.8",
-        "Operating System :: OS Independent",
-    ],
+    classifiers=[],
     python_requires=">=3.8",
     install_requires=REQUIREMENTS,
     setup_requires=[],

@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+set -x
+
+black -v src tests setup.py

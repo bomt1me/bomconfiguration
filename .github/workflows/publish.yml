@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  push:
+    tags: '*'
+
+jobs:
+  publish:
+    name: "Publish release"
+    runs-on: "ubuntu-latest"
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    environment:
+      name: deploy
+
+    steps:
+      - uses: "actions/checkout@v2"
+        with:
+          # lowest supported python version
+          python-version: 3.8
+      - name: "Build Docker"
+        run: "sh scripts/docker python:3.8-bullseye"
+      - name: "Publish to PyPI"
+        run: "sh scripts/publish"
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: __token__

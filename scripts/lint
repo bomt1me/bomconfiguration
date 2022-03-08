@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+set -x
+
+black -v --check --diff src tests setup.py
+pyflakes ./src
+pyflakes ./tests
+pylint ./src --rcfile .pylintrc
+pylint ./tests --rcfile .pylintrc
+mypy --namespace-packages -p bom.configuration
+mypy tests

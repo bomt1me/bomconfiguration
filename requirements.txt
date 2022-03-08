@@ -1,0 +1,10 @@
+-e .
+black
+changelog-cli
+pyflakes
+pytest
+pytest-cov
+pylint
+mkdocs-material
+twine
+mypy

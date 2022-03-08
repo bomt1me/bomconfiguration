@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+set -e
+
+docker run -it -p 8888:8000 -v "$(pwd)":/library bom-configuration bash

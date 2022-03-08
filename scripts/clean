@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+if [ -d 'dist' ] ; then
+    rm -r dist
+fi
+if [ -d 'build' ] ; then
+    rm -r build
+fi
+if [ -d 'site' ] ; then
+    rm -r site
+fi
+if [ -d 'env' ] ; then
+    rm -r env
+fi
+if [ -d 'src/bom_configuration.egg-info' ] ; then
+    rm -r src/bom_configuration.egg-info
+fi
+if [ -d '.pytest_cache' ] ; then
+    rm -r .pytest_cache
+fi
+if [ -d '.mypy_cache' ] ; then
+    rm -r .mypy_cache
+fi
+rm -f coverage.xml
+rm -f .coverage
+find . -name __pycache__ -prune -type d -exec rm -rf {} \;

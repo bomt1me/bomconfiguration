@@ -1,5 +1,0 @@
-[Master]
-disable = bad-continuation, missing-function-docstring, missing-module-docstring,missing-class-docstring
-
-[FORMAT]
-max-line-length=120
