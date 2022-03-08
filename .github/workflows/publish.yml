@@ -23,7 +23,8 @@ jobs:
       - name: "Build Package"
         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/build"
       - name: "Publish to PyPI"
-        run: "sh scripts/publish"
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: "sh scripts/publish"
