@@ -1,31 +1,35 @@
-# name: Dev
+name: Dev
 
-# on:
-#   push:
-#     branches: ["main"]
-#   pull_request:
-#     branches: ["main"]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
-# jobs:
-#   tests:
-#     name: "Python ${{ matrix.python-version }}"
-#     runs-on: "ubuntu-latest"
+jobs:
+  tests:
+    name: "Python ${{ matrix.python-version }}"
+    runs-on: "ubuntu-latest"
 
-#     strategy:
-#       matrix:
-#         python-version: ["python:3.8-bullseye", "python:3.9-bullseye", "python:3.10-bullseye"]
+    strategy:
+      matrix:
+        python-version: ["python:3.8-bullseye", "python:3.9-bullseye", "python:3.10-bullseye"]
 
-#     steps:
-#       - uses: "actions/checkout@v2"
-#       - name: "Build Docker"
-#         run: sh scripts/docker ${{ matrix.python-version }}
-#       - name: "Build Package"
-#         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/build"
-#       - name: "Lint package"
-#         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/lint"
-#       - name: "Run tests"
-#         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/test"
-#       - name: "Run coverage"
-#         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/coverage"
-#       - name: "Clean workspace"
-#         run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/clean"
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: "Build Docker"
+        run: sh scripts/docker ${{ matrix.python-version }}
+      - name: "Build Package"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/build"
+      - name: "Lint package"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/lint"
+      - name: "Run tests"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/test"
+      - name: "Run coverage"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/coverage"
+      - name: "Publish to PyPI"
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: "sh scripts/publish"
