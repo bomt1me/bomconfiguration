@@ -28,8 +28,8 @@ jobs:
       # - name: "Run coverage"
       #   run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/coverage"
       - name: "Publish to PyPI"
-        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' and matrix.python-version == 'python:3.8-bullseye' }}
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: "sh scripts/publish"
+        run: "docker run -p 8888:8000 -v $(pwd):/library bom-configuration sh scripts/publish"

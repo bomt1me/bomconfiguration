@@ -3,7 +3,7 @@ from setuptools import setup, find_namespace_packages
 
 
 REQUIREMENTS = []
-VERSION = "1.0.3"
+VERSION = "1.0.4"
 
 
 setup(
